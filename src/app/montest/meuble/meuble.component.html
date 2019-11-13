@@ -1,0 +1,17 @@
+<h3>
+    {{meub.libelle |uppercase}}
+</h3>
+<img [src]="meub.img" style="width: 100px; height: 100px;"/>
+
+<ul  [ngClass]="{'font': meub.prixTTC<200 && meub.prixTTC>100}">
+    <li>
+        prix: {{meub.prixTTC}}
+    </li>
+    <li>
+        <input type="checkbox" [checked]="meub.neuf"/> Neuf
+    </li>
+    <li *ngIf="!meub.neuf">
+        <button (click)="test=true">prix original</button>
+        <input *ngIf="test" type="number" [value]="meub.prixTTC*15/100+meub.prixTTC" readonly />
+    </li>
+</ul>
